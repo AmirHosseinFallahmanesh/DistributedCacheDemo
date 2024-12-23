@@ -30,6 +30,18 @@ namespace Demo2.Controllers
             return View();
         }
 
+        public IActionResult Test()
+        {
+            HttpContext.Session.SetString("k2", Guid.NewGuid().ToString());
+            //distributedCache.SetString("data", "00000000");
+            //string data= distributedCache.GetString("data");
+            return View();
+        }
+
+        public IActionResult TestR()
+        {
+            return Content(HttpContext.Session.GetString("k2"));
+        }
         public IActionResult Privacy()
         {
 

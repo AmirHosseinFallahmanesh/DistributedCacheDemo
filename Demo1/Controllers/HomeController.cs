@@ -35,6 +35,19 @@ namespace Demo1.Controllers
             return Content(data);
         }
 
+        public IActionResult Test()
+        {
+            HttpContext.Session.SetString("k1", Guid.NewGuid().ToString());
+            //distributedCache.SetString("data", "00000000");
+            //string data= distributedCache.GetString("data");
+            return View();
+        }
+
+        public IActionResult TestR()
+        {
+            return Content(HttpContext.Session.GetString("k1"));
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
